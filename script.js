@@ -13,7 +13,7 @@ const messages = [
         title: 'ABRE QUANDO QUISER SORRIR MINHA PEQUENA ESSE SORRISAO LINDO',
         content: `OIIIIIIIII MINHA RAINHAAAAAAAAAA OIA O VIDEO QUE TENHO PARA VOXE FICA FELIZINHA HEHEHEHEHEH EU TE AMOOOOOOOOOOOO DEMAISSSSSSSSSSSSSSSSSSS e sabia que seu sorriso ilumina meu dia 204020420302032032032 vezes mais
                   LINDONAAAAAAAAAA perfeitaaaaaaa minha deusa grega eu te amooooooooo`,
-        video: '/7meses/assets/videos/opaganastyle.mp4'
+        video: '/7meses/assets/videos/Opaganastyle.mp4'
     },
     {
         category: 'dia-dificil',
