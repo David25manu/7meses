@@ -6,26 +6,26 @@ const messages = [
         title: 'ABRE QUANDO TIVER SAUDADIS DO SEU NENEMMMMMMMMMMMM',
         content: `Eu sei qui e dificil as vezes nos tar longe pequena MAS E SO UM DESAFIO COMO VOCE FALA EU TE AMO DEMAISSSSSSSSSSSS
                   VO FAZER DE TUDO PARA QUE SEJA POSSIVEL NOS DOIS JUNTINHOS SABIA aqui uns bejaos do seu nenem`,
-        video: '/7meses/assets/videos/BEJAOS.mp4' // CAMINHO CORRIGIDO!
+        video: '/7meses/assets/videos/BEJAOS.mp4'
     },
     {
         category: 'sorriso',
         title: 'ABRE QUANDO QUISER SORRIR MINHA PEQUENA ESSE SORRISAO LINDO',
         content: `OIIIIIIIII MINHA RAINHAAAAAAAAAA OIA O VIDEO QUE TENHO PARA VOXE FICA FELIZINHA HEHEHEHEHEH EU TE AMOOOOOOOOOOOO DEMAISSSSSSSSSSSSSSSSSSS e sabia que seu sorriso ilumina meu dia 204020420302032032032 vezes mais
                   LINDONAAAAAAAAAA perfeitaaaaaaa minha deusa grega eu te amooooooooo`,
-        video: '/7meses/assets/videos/opaganastyle.mp4' // CAMINHO CORRIGIDO!
+        video: '/7meses/assets/videos/opaganastyle.mp4'
     },
     {
         category: 'dia-dificil',
         title: 'Abre quando tiver titi ou baba :(( EU TE AMOOOOO',
         content: 'Quando as coisas ficarem dificeis lembre-se que voce e a pessoa mais forte e incrivel que conheco Respire fundo e saiba que estou aqui com voce em pensamento Tudo vai ficar bem ✨ (AQUI EM BAIXO esta um video do seu nenem respirando fundo para voxe fazer ao mesmo tempo se seu nenem tiver mimindo ou sem bateria HEHE EU TE AMOOOOOOOOOOOOOOO)',
-        video: '/7meses/assets/videos/respira fundo nenem.mp4' // CAMINHO CORRIGIDO!
+        video: '/7meses/assets/videos/respira fundo nenem.mp4'
     },
     {
         category: 'feliz',
         title: 'ABRE QUANDO VOXE TIVER FELIZINHAAA',
         content: `QUE BOM QUE ESTA FELIZZZZZZZZZZ MINHA PRINCESAAAAAAAAAAAAA EU AMO SEU SORRISO E SE VOXE TA FELIZ EU TAMBEM TOOOOOOOOOOOOOOOOO HIHIHIIHIHIH EU TE AMO TANTO MINHA PEQUENINA`,
-        image: '/7meses/assets/images/Hihihi.jpg' // CAMINHO CORRIGIDO!
+        image: '/7meses/assets/images/Hihihi.jpg'
     },
     {
         category: 'mesversario',
@@ -34,7 +34,7 @@ const messages = [
                   nos as vezes pode briga mas no fim sempre se acalma e se resolve pq nos quer lutar pra ficar junto nenem ent vamo continuar para sempre entendeu
                   EU TE AMO MUITOOOOOOOOO voce fica tao linda quando dorme quando fica brava quando ta triti quando ta com raiva quando faz vozinha de nenem minha favorita
                   eu amo tudo isso em vc e muito mais sabia :) espero que voce nunca desista de mim pequena e lembra que nunca nunca vou desistir de voce ❤️`,
-        audio: '/7meses/assets/audios/Para minha molanguinha.mp3', // CAMINHO CORRIGIDO!
+        video: '/7meses/assets/videos/Para minha molanguinha.mp4', // <-- AGORA É VÍDEO E ESTÁ NA PASTA DE VÍDEOS
         specialAnimation: true
     }
 ];
@@ -86,15 +86,19 @@ function displayMessage(message) {
         messageImage.src = message.image;
         messageImage.classList.remove('hidden');
     }
+    // Verifica se a mensagem tem um VÍDEO
     if (message.video) {
         messageVideo.src = message.video;
         messageVideo.classList.remove('hidden');
         messageVideo.load();
+        // messageVideo.play(); // Você pode descomentar para reproduzir automaticamente
     }
-    if (message.audio) {
+    // Verifica se a mensagem tem um ÁUDIO (apenas se não for vídeo)
+    else if (message.audio) { // Use else if para garantir que não tente tocar áudio se já tiver vídeo
         messageAudio.src = message.audio;
         messageAudio.classList.remove('hidden');
         messageAudio.load();
+        // messageAudio.play(); // Você pode descomentar para reproduzir automaticamente
     }
 }
 
