@@ -1,0 +1,310 @@
+/* Importação de fontes fofas do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap');
+
+:root {
+    --primary-purple: #8B008B; /* Roxo vibrante */
+    --secondary-blue: #6495ED; /* Azul claro */
+    --light-pink: #FFDAB9; /* Rosa pêssego suave */
+    --light-yellow: #FFFACD; /* Amarelo suave */
+    --text-color: #333;
+    --card-bg: #fff;
+    --button-bg: var(--primary-purple);
+    --button-hover-bg: #6A0DAD; /* Roxo mais escuro */
+    --page-background-color: #FFC0CB; /* Rosa forte para o fundo da página */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    /* Removido overflow: hidden daqui para permitir a rolagem global */
+    /* background-color: var(--page-background-color); */
+    font-family: 'Quicksand', sans-serif;
+    color: var(--text-color);
+    position: relative; /* Para o posicionamento dos corações fixos */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--page-background-color); /* Fundo agora é um rosa sólido */
+    /* overflow: hidden; foi removido daqui para permitir a rolagem! */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+    box-sizing: border-box;
+    margin: 20px auto;
+    position: relative;
+    z-index: 1; /* Para garantir que o conteúdo fique acima das animações */
+
+    /* ***** IMPORTANTE PARA A ROLAGEM ***** */
+    max-height: 90vh; /* Limita a altura do container para que ele possa rolar */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical apenas se necessário */
+    padding-right: 15px; /* Evita que o conteúdo seja cortado pela barra de rolagem */
+    /* ------------------------------------- */
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: var(--primary-purple);
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: var(--secondary-blue);
+    margin-bottom: 30px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.message-card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--secondary-blue);
+    border-radius: 12px;
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+}
+
+.message-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-purple);
+}
+
+.message-card h2 {
+    font-size: 1.5em;
+    color: var(--primary-purple);
+    margin-bottom: 0;
+}
+
+/* Estilo para a área de exibição da mensagem */
+.message-display {
+    background-color: var(--card-bg);
+    border: 3px solid var(--primary-purple);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    position: relative; /* Para os corações voadores (se eles fossem dentro daqui) */
+    animation: fadeInScale 0.5s ease-out;
+}
+
+.message-display h2 {
+    font-family: 'Pacifico', cursive;
+    color: var(--secondary-blue);
+    font-size: 2.2em;
+    margin-bottom: 15px;
+}
+
+.message-display p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.message-display img,
+.message-display video,
+.message-display audio {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-display video {
+    max-height: 300px;
+    width: auto;
+}
+
+.message-display audio {
+    width: 80%;
+    margin-top: 20px;
+}
+
+.message-display .hidden {
+    display: none;
+}
+
+button#closeMessageBtn {
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 25px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button#closeMessageBtn:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Animações */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Estilos para a animação de corações */
+.heart-animation-area { /* Mantive a classe, mas ela não será usada para os corações globais */
+    display: none; /* Esconde a área antiga se não for mais usada */
+}
+
+.heart {
+    position: fixed; /* Fixa o coração na janela de visualização */
+    transform: rotate(-45deg);
+    animation: floatHeartWholePage 8s linear infinite; /* Animação contínua */
+    opacity: 0; /* Começa invisível */
+    z-index: 0; /* Garante que fiquem por trás do conteúdo principal */
+}
+
+/* Corações com o "emoji" */
+.heart::before {
+    content: '💜'; /* Emoji de coração roxo */
+    font-size: 2em; /* Tamanho do emoji */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg); /* Ajusta a rotação do emoji */
+}
+
+.heart.blue::before {
+    content: '💙'; /* Emoji de coração azul */
+}
+
+
+@keyframes floatHeartWholePage {
+    0% {
+        top: -10%; /* Começa acima da tela */
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Fica visível */
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        top: 110%; /* Desce para fora da tela */
+        opacity: 0; /* Desaparece */
+    }
+}
+
+
+/* Animações de Texto "Eu te amo" */
+.love-text {
+    position: absolute; /* Relative ao body, que está com position: relative */
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5em; /* Tamanho do texto */
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none; /* Não interfere com cliques */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    z-index: 10; /* Garante que o texto fique acima de tudo */
+    animation: fadeAndFloat 1.5s ease-out forwards;
+    transform-origin: center center;
+}
+
+/* Alterna as cores */
+.love-text.color-blue {
+    color: var(--secondary-blue); /* Azul */
+}
+.love-text.color-purple {
+    color: var(--primary-purple); /* Roxo */
+}
+
+@keyframes fadeAndFloat {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 0) scale(0.8);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -20px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -80px) scale(1.2);
+    }
+}
+
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .subtitle {
+        font-size: 1em;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    .container {
+        max-height: 85vh; /* Ajusta a altura máxima em telas menores */
+    }
+
+    .message-card, .message-display {
+        padding: 20px;
+    }
+
+    .message-display h2 {
+        font-size: 1.8em;
+    }
+
+    button#closeMessageBtn {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .love-text {
+        font-size: 1.8em; /* Ajusta tamanho do texto em telas menores */
+    }
+
+    .heart::before {
+        font-size: 1.5em; /* Ajusta tamanho do emoji em telas menores */
+    }
+}
