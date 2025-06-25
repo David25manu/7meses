@@ -32,7 +32,7 @@ const messages = [
         category: 'medinho',
         title: 'ABRE QUANDO TIVER COM MEDINHO MINHA MOLANGUINHA',
         content: `(AQUI UM BEJAO QUE CURA MEDOSSSSS) Não precisa ter medo minha princesona porque seu nenem sempre vai estar com voce tabommmm??? SEMPREEEEEEEEE EU TE AMO DEMAISSSSSSS se eu tiver longe ou sem conseguir te ajuda supera o medo pensa que eu estou sempre com voce no seu coração tabom? :))`,
-        video: '/7meses/assets/images/medinho.jpg' // Caminho da imagem confirmado como .jpg
+        image: '/7meses/assets/images/medinho.jpg' // Caminho da imagem confirmado como .jpg
     },
     {
         category: 'mesversario',
